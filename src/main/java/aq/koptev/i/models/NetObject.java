@@ -1,7 +1,7 @@
-package aq.koptev.ichatclient.models;
+package aq.koptev.i.models;
 
-import aq.koptev.ichatclient.util.ParameterNetObject;
-import aq.koptev.ichatclient.util.TypeNetObject;
+import aq.koptev.i.util.ParameterNetObject;
+import aq.koptev.i.util.TypeNetObject;
 
 import java.io.*;
 import java.util.HashMap;
@@ -42,7 +42,7 @@ public class NetObject implements Serializable {
         return  typeNetObject;
     }
 
-    public static <T> byte[] getBytes(T obj) {
+    public static <T extends Serializable> byte[] getBytes(T obj) {
         try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
              ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream)) {
             objectOutputStream.writeObject(obj);
@@ -53,7 +53,7 @@ public class NetObject implements Serializable {
         return null;
     }
 
-    public static <T> T getObject(byte[] bytes) {
+    public static <T extends Serializable> T getObject(byte[] bytes) {
         try(ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
             ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream)) {
             return (T) objectInputStream.readObject();

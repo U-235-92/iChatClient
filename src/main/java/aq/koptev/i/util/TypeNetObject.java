@@ -1,4 +1,4 @@
-package aq.koptev.ichatclient.util;
+package aq.koptev.i.util;
 
 public enum TypeNetObject {
     REQUEST_AUTHENTICATION, ERROR_AUTHENTICATION, SUCCESS_AUTHENTICATION,

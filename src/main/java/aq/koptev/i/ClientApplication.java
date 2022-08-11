@@ -1,10 +1,9 @@
-package aq.koptev.ichatclient;
+package aq.koptev.i;
 
-import aq.koptev.ichatclient.connect.Connector;
-import aq.koptev.ichatclient.connect.DataPool;
-import aq.koptev.ichatclient.connect.Observable;
-import aq.koptev.ichatclient.controllers.ChatController;
-import aq.koptev.ichatclient.controllers.IdentificationController;
+import aq.koptev.i.connect.Connector;
+import aq.koptev.i.connect.Observable;
+import aq.koptev.i.controllers.ChatController;
+import aq.koptev.i.controllers.IdentificationController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -26,6 +25,12 @@ public class ClientApplication extends Application {
         connector = new Connector();
         buildIdentificationView();
         buildChatView();
+
+//        FXMLLoader fxmlLoader = new FXMLLoader(ClientApplication.class.getResource("identification-view.fxml"));
+//        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+//        stage.setTitle("Чат");
+//        stage.setScene(scene);
+//        stage.show();
     }
 
     private void buildIdentificationView() throws IOException {
@@ -48,7 +53,7 @@ public class ClientApplication extends Application {
         chatStage.setTitle("Чат");
         chatStage.setScene(scene);
         chatController = fxmlLoader.getController();
-        connector.register(chatController);
+//        connector.register(chatController);
         chatController.setConnector(connector);
         chatController.setDataPool(connector.getDataPool());
         chatController.setClientApplication(this);
@@ -57,6 +62,7 @@ public class ClientApplication extends Application {
     public void showChatView() {
         connector.remove(identificationController);
         identificationStage.close();
+        connector.register(chatController);
         chatController.setDataFromDataPool();
         chatStage.show();
     }

@@ -1,9 +1,10 @@
-package aq.koptev.ichatclient.models;
+package aq.koptev.i.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClientPool {
+public class ClientPool implements Serializable {
 
     private List<Client> clients;
 

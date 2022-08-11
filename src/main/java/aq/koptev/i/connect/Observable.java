@@ -1,7 +1,7 @@
-package aq.koptev.ichatclient.connect;
+package aq.koptev.i.connect;
 
-import aq.koptev.ichatclient.controllers.Observer;
-import aq.koptev.ichatclient.models.NetObject;
+import aq.koptev.i.controllers.Observer;
+import aq.koptev.i.models.NetObject;
 
 public interface Observable {
     void register(Observer observer);

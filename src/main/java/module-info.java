@@ -4,10 +4,10 @@ module aq.koptev.ichatclient {
 
     requires org.kordamp.bootstrapfx.core;
 
-    opens aq.koptev.ichatclient to javafx.fxml;
-    exports aq.koptev.ichatclient;
-    exports aq.koptev.ichatclient.connect;
-    opens aq.koptev.ichatclient.connect to javafx.fxml;
-    exports aq.koptev.ichatclient.controllers;
-    opens aq.koptev.ichatclient.controllers to javafx.fxml;
+    opens aq.koptev.i to javafx.fxml;
+    exports aq.koptev.i;
+    exports aq.koptev.i.connect;
+    opens aq.koptev.i.connect to javafx.fxml;
+    exports aq.koptev.i.controllers;
+    opens aq.koptev.i.controllers to javafx.fxml;
 }

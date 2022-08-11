@@ -1,11 +1,11 @@
-package aq.koptev.ichatclient.controllers;
+package aq.koptev.i.controllers;
 
-import aq.koptev.ichatclient.ClientApplication;
-import aq.koptev.ichatclient.connect.DataPool;
-import aq.koptev.ichatclient.connect.Observable;
-import aq.koptev.ichatclient.models.*;
-import aq.koptev.ichatclient.util.ParameterNetObject;
-import aq.koptev.ichatclient.util.TypeNetObject;
+import aq.koptev.i.ClientApplication;
+import aq.koptev.i.connect.DataPool;
+import aq.koptev.i.connect.Observable;
+import aq.koptev.i.models.*;
+import aq.koptev.i.util.ParameterNetObject;
+import aq.koptev.i.util.TypeNetObject;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;

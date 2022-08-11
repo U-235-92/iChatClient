@@ -1,8 +1,8 @@
-package aq.koptev.ichatclient.connect;
+package aq.koptev.i.connect;
 
-import aq.koptev.ichatclient.models.ChatHistory;
-import aq.koptev.ichatclient.models.Client;
-import aq.koptev.ichatclient.models.ClientPool;
+import aq.koptev.i.models.ChatHistory;
+import aq.koptev.i.models.Client;
+import aq.koptev.i.models.ClientPool;
 
 public interface DataPool {
     void setChatHistory(ChatHistory chatHistory);

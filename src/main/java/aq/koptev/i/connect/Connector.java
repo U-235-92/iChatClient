@@ -1,10 +1,11 @@
-package aq.koptev.ichatclient.connect;
+package aq.koptev.i.connect;
 
-import aq.koptev.ichatclient.controllers.Observer;
-import aq.koptev.ichatclient.models.ChatHistory;
-import aq.koptev.ichatclient.models.Client;
-import aq.koptev.ichatclient.models.ClientPool;
-import aq.koptev.ichatclient.models.NetObject;
+import aq.koptev.i.controllers.Observer;
+import aq.koptev.i.models.ChatHistory;
+import aq.koptev.i.models.Client;
+import aq.koptev.i.models.ClientPool;
+import aq.koptev.i.models.NetObject;
+import javafx.application.Platform;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -42,19 +43,25 @@ public class Connector implements Observable {
     }
 
     private void waitNetObject() {
-        try {
-            netObject = (NetObject) objectInputStream.readObject();
-            notifyObservers();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        Thread thread = new Thread(() -> {
+           while(true) {
+               try {
+                   netObject = (NetObject) objectInputStream.readObject();
+                   notifyObservers();
+               } catch (IOException e) {
+                   e.printStackTrace();
+               } catch (ClassNotFoundException e) {
+                   e.printStackTrace();
+               }
+           }
+        });
+        thread.setDaemon(true);
+        thread.start();
     }
 
     private void notifyObservers() {
         for(Observer observer : observers) {
-            observer.update(netObject);
+            Platform.runLater(() -> observer.update(netObject));
         }
     }
 

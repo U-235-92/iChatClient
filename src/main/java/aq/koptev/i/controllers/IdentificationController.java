@@ -1,14 +1,11 @@
-package aq.koptev.ichatclient.controllers;
+package aq.koptev.i.controllers;
 
-import aq.koptev.ichatclient.ClientApplication;
-import aq.koptev.ichatclient.connect.DataPool;
-import aq.koptev.ichatclient.connect.Observable;
-import aq.koptev.ichatclient.models.ChatHistory;
-import aq.koptev.ichatclient.models.Client;
-import aq.koptev.ichatclient.models.ClientPool;
-import aq.koptev.ichatclient.models.NetObject;
-import aq.koptev.ichatclient.util.ParameterNetObject;
-import aq.koptev.ichatclient.util.TypeNetObject;
+import aq.koptev.i.ClientApplication;
+import aq.koptev.i.connect.DataPool;
+import aq.koptev.i.connect.Observable;
+import aq.koptev.i.models.*;
+import aq.koptev.i.util.ParameterNetObject;
+import aq.koptev.i.util.TypeNetObject;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
@@ -17,8 +14,6 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
-
-import java.util.List;
 
 public class IdentificationController implements Observer {
     private Observable connector;
@@ -102,9 +97,9 @@ public class IdentificationController implements Observer {
     }
 
     private void processErrorAuthentication(NetObject netObject) {
-        String text = NetObject.getObject(netObject.getData(ParameterNetObject.MESSAGE));
+        Message message = NetObject.getObject(netObject.getData(ParameterNetObject.MESSAGE));
         authMessageLabel.setTextFill(Color.RED);
-        authMessageLabel.setText(text);
+        authMessageLabel.setText(message.getText());
     }
 
     private void processSuccessAuthentication(NetObject netObject) {
@@ -118,9 +113,9 @@ public class IdentificationController implements Observer {
     }
 
     private void processErrorRegistration(NetObject netObject) {
-        String text = NetObject.getObject(netObject.getData(ParameterNetObject.MESSAGE));
+        Message message = NetObject.getObject(netObject.getData(ParameterNetObject.MESSAGE));
         regMessageLabel.setTextFill(Color.RED);
-        regMessageLabel.setText(text);
+        regMessageLabel.setText(message.getText());
     }
 
     private void processSuccessRegistration(NetObject netObject) {

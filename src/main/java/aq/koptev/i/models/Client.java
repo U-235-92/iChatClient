@@ -1,6 +1,8 @@
-package aq.koptev.ichatclient.models;
+package aq.koptev.i.models;
 
-public class Client {
+import java.io.Serializable;
+
+public class Client implements Serializable {
 
     private String login;
     private String password;
